@@ -6,4 +6,6 @@
 #include <string.h>
 #include <fcntl.h>
 
+void split(char *str, char **str_div);
+
 #endif
