@@ -10,14 +10,14 @@
 #include <fcntl.h>
 
 int interactive_mode(void);
-void *split_line(char *str, char **str_list);
+char *split_line(char *str, char **str_list);
 void handle_signal(int sign __attribute__((unused)));
 int execute(const char *pathname, char **argv, char **environ);
 
 int _strlen_recursion(char *s);
 char *_strncpy(char *dest, char *src, int n);
-char *_realloc(char *old, int len, int newlen);
 char *_memcpy(char *dest, char *src, unsigned int n);
+char *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 
 
 #endif

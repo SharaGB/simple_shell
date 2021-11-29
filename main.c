@@ -15,7 +15,7 @@ int main(void)
 	signal(SIGINT, handle_signal);
 	while (1)
 	{
-		write(STDOUT_FILENO, prompt, _strlen_recursion(prompt));
+		write(STDOUT_FILENO, prompt, _strlen(prompt));
 		readline = getline(&line, &linesize, stdin);
 		/*Obtiene la línea y la almacena en line*/
 		while (readline == EOF)

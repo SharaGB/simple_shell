@@ -85,5 +85,5 @@ void get_path(char **envp, char *bin_path)
 			break;
 		}
 	}
-	strncpy(bin_path, tmp, _strlen_recursion(tmp));
+	strncpy(bin_path, tmp, _strlen(tmp));
 }

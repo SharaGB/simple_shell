@@ -1,21 +1,26 @@
 #include "shell.h"
 /**
+ * @brief 
  * 
- * @brief
+ * @param pathname 
+ * @param paths 
+ * @return int 
  */
-	char *path_buff, *path_dup, *paths, *path_env_name, *path[50];
+int found_PATH(char *pathname, char *paths)
+{
+	char *buff, *dup, *path[50];
 	int i;
 
 	i = 0;
-	path_env_name = "PATH";
-	path_buff = getenv(path_env_name); /* get the variable of PATH environment */
-	path_dup = _strdup(path_buff); /* this function is found below */
-	paths = strtok(path_dup, ":"); /* tokenizes it */
+	pathname = "PATH";
+	buff = getenv(pathname); /*Obtener la variable de entorno PATH*/
+	dup = _strdup(buff);
+	paths = strtok(dup, ":");
 	while (paths)
 	{
 		path[i] = paths;
 		paths = strtok(NULL, ":");
 		i++;
 	}
-	path[i] = NULL; /* terminates it with NULL */
+	path[i] = NULL; /*Lo termina con NULL*/
 }
