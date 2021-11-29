@@ -1,23 +1,5 @@
 #include "shell.h"
 /**
- * _strlen_recursion - Length of a string
- * @s: Check of string
- * Return: The length of a string
- */
-int _strlen_recursion(char *s)
-{
-	int len;
-
-	len = 0;
-	if (*s != '\0')
-	{
-		len = _strlen_recursion(s + 1);
-		len++;
-	}
-	return (len);
-}
-
-/**
  * main - Write our prompt
  * Return: Always 0
  */
@@ -57,17 +39,12 @@ void handle_signal(int sign __attribute__((unused)))
 }
 
 /**
- * @brief 
  * 
+ * @brief 
  */
-int non_interactive_mode()
-
-/**
- * function_exit - Function that allows you to exit the program
- * @args: Arguments entered by the user
- * Return: 0
- */
-int function_exit(char **args)
-{
-	return (0);
-}
+int main(void)
+int fd;
+if (isatty (fileno (stdin)))
+fd = interactive_mode; 
+else 
+return (0);
