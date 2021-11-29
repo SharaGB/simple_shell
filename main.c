@@ -24,7 +24,6 @@ int interactive_mode(void)
 			return (readline);
 		}
 	}
-	printf("%s\n", line);
 	return (readline);
 }
 
@@ -44,12 +43,9 @@ void handle_signal(int sign __attribute__((unused)))
  */
 int main(void)
 {
-	int fd;
-
-	if (isatty(fileno(stdin)))
+	if (isatty(STDIN_FILENO) == 1)
 	{
-		fd = interactive_mode;
+		printf("interactive_mode");
 	}
-	else
-		return (0);
+	return (0);
 }
