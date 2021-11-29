@@ -64,34 +64,33 @@ char *_memcpy(char *dest, char *src, unsigned int n)
  * @old:
  * @len:
  * @newlen:
- * Return: Double ptr
  */
-char *_realloc(char *old, int len, int newlen)
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	char *ptr = malloc(newlen * sizeof(char *));
+	void *new_ptr = NULL;
 
-	if (!ptr)
+	if (old_size == new_size)
+	{
+		return (ptr);
+	}
+	if (new_size == 0 && ptr)
 	{
 		free(ptr);
 		return (NULL);
 	}
-	if (len == newlen)
-	{
-		return (old);
-	}
-	if (newlen == 0 && old)
-	{
-		free(old);
-		return (NULL);
-	}
-	if (!old)
-	{
-		return (malloc(newlen));
-	}
 	if (!ptr)
 	{
-		_memcpy(ptr, old, len);
-		free(old);
+		return (malloc(new_size));
 	}
-	return (ptr);
+	new_ptr = (void *)malloc(new_size);
+	if (new_ptr == NULL)
+	{
+		return (NULL);
+	}
+	if (new_ptr)
+	{
+		_memcpy(new_ptr, ptr, old_size);
+		free(ptr);
+	}
+	return (new_ptr);
 }

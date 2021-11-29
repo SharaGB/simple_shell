@@ -1,43 +1,32 @@
 #include "shell.h"
 /**
- * split - Function that tokenizes the command line
- * @str: Check string delimiter
+ * split_line - Function that tokenizes the command line
+ * @str: Is the string to be tokenized
  * @str_list: Double pointer that divides by words
  */
-void split_line(char *str, char **str_list)
+char *split_line(char *str, char **str_list)
 {
-	int size = TOK_BUFSIZE;
 	int position = 0;
-	const char delimitador[] = " \n\t";
+	int size = TOK_BUFSIZE;
 	char *token_line = NULL;
-
+	const char delimitador[] = " \n\t";
+	/*Se usa un delimitador para decri que es el final de una palabra*/
 	str_list = malloc(size * sizeof(char *) + 1);
 	if (!str_list)
 	{
 		free(str_list);
 		return (NULL);
 	}
-	token_line = strtok(str, delimitador);
+	token_line = strtok(str, delimitador); /*Lo almacena dentro de token_linen */
 	while (token_line)
 	{
 		str_list[position] = token_line; /*Recorre la acadena en cada posición*/
-		position++;
-
-		if (position >= size)
-		{
-			size += TOK_BUFSIZE;
-			str_list = _realloc(str_list, size * sizeof(char *));
-
-			if (!str_list)
-			{
-				perror("No such file or directory");
-				exit(EXIT_FAILURE);
-			}
-		}
 		token_line = strtok(NULL, delimitador);
 		/*Se pasa NULL como primer argumento para obtener el siguiente token*/
+		position++;
+
 	}
-	str_list[position] = NULL;
+	str_list[position] = NULL; /*Establece str_list a NULL*/
 	free(str_list);
 	return (str_list);
 }

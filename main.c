@@ -3,12 +3,13 @@
  * interactive_mode - Write our prompt, mode interactive
  * Return: Always 0
  */
-int interactive_mode(void)
+int main(void)
 {
-	char *line = NULL;
-	char *prompt = "$ ";
-	size_t linesize = 0;
+	size_t linesize = 32;
 	size_t readline = 0;
+	char *prompt = "$ ";
+	char *line = malloc(sizeof(char) * linesize);
+	/*Bufer para almacenar la entrada del usuario*/
 
 	signal(SIGINT, SIG_IGN);
 	signal(SIGINT, handle_signal);
@@ -16,7 +17,7 @@ int interactive_mode(void)
 	{
 		write(STDOUT_FILENO, prompt, _strlen_recursion(prompt));
 		readline = getline(&line, &linesize, stdin);
-
+		/*Obtiene la línea y la almacena en line*/
 		while (readline == EOF)
 		{
 			free(line);
@@ -40,7 +41,7 @@ void handle_signal(int sign __attribute__((unused)))
 /**
  * main - Function that separate two modes
  * Return: 0
- */
+ *
 int main(void)
 {
 	if (isatty(STDIN_FILENO) == 1)
@@ -48,4 +49,4 @@ int main(void)
 		printf("interactive_mode");
 	}
 	return (0);
-}
+} */

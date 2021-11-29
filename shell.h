@@ -10,7 +10,7 @@
 #include <fcntl.h>
 
 int interactive_mode(void);
-void split_line(char *str, char **str_list);
+void *split_line(char *str, char **str_list);
 void handle_signal(int sign __attribute__((unused)));
 int execute(const char *pathname, char **argv, char **environ);
 
