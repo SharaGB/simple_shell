@@ -15,3 +15,20 @@ int _strlen_recursion(char *s)
 	}
 	return (len);
 }
+
+/**
+ * 
+ * @brief 
+ */
+char _realloc (char **old, int len1, int newlen)
+{
+char **ptr = malloc (newlen * sizeof(char ptr));
+if (!= ptr)
+{
+free ptr 
+return (NULL);
+}
+}
+memcpy (ptr, old len1)
+free old
+return (ptr)
