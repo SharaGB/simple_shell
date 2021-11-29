@@ -9,9 +9,10 @@
 #include <signal.h>
 #include <fcntl.h>
 
-void loop_shell(void);
-int _strlen_recursion(char *s);
+int interactive_mode(void);
 void split_line(char *str, char **str_list);
 void handle_signal(int sign __attribute__((unused)));
+int execute(const char *pathname, char **argv, char **environ);
+
 
 #endif

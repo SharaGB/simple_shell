@@ -11,7 +11,7 @@ void split_line(char *str, char **str_list)
 	const char delimitador[] = " \n\t";
 	char *token_line = NULL;
 
-	str_list = maloc(size * sizeof(char *) + 1);
+	str_list = malloc(size * sizeof(char *) + 1);
 	if (!str_list)
 	{
 		free(str_list);
@@ -20,13 +20,13 @@ void split_line(char *str, char **str_list)
 	token_line = strtok(str, delimitador);
 	while (token_line)
 	{
-		str_list[position] = token_line; /*Por medio del while se recorre la acadena*/
+		str_list[position] = token_line; /*Recorre la acadena en cada posición*/
 		position++;
 
 		if (position >= size)
 		{
 			size += TOK_BUFSIZE;
-			str_list = realloc(str_list, size * sizeof(char *));
+			str_list = _realloc(str_list, size * sizeof(char *));
 
 			if (!str_list)
 			{
@@ -66,6 +66,7 @@ int execute(const char *pathname, char **argv, char **environ)
 	{
 		perror(argv[0]);
 	}
+	else
 	{
 		(wait(NULL));
 	}
@@ -96,39 +97,4 @@ void get_path(char **envp, char *bin_path)
 		}
 	}
 	strncpy(bin_path, tmp, _strlen_recursion(tmp));
-}
-
-/**
- * @brief 
- * 
- * @param path_str 
- */
-void insert_path(char *path_str)
-{
-	int index = 0;
-	char *tmp = path_str;
-	char ret[100];
-
-	while (*tmp != '=')
-	{
-		tmp++;
-	}
-	tmp++;
-	while (*tmp != '\0')
-	{
-		if (*tmp == ':')
-		{
-			strncat(ret, "/", 1);
-			search_path[index] = (char*)malloc(sizeof(char) * (_strlen_recursion(ret) + 1));
-			strncat(search_path[index], ret, _strlen_recursion(ret));
-			strncat(search_pat[index], "\0", 1);
-			index++;
-			bzero(ret, 100);
-		}
-		else
-		{
-			strncat(ret, tmp, 1);
-		}
-		tmp++;
-	}
 }

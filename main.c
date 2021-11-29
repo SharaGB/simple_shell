@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
- * main - Write our prompt
+ * interactive_mode - Write our prompt, mode interactive
  * Return: Always 0
  */
 int interactive_mode(void)
@@ -39,12 +39,17 @@ void handle_signal(int sign __attribute__((unused)))
 }
 
 /**
- * 
- * @brief 
+ * main - Function that separate two modes
+ * Return: 0
  */
 int main(void)
-int fd;
-if (isatty (fileno (stdin)))
-fd = interactive_mode; 
-else 
-return (0);
+{
+	int fd;
+
+	if (isatty(fileno(stdin)))
+	{
+		fd = interactive_mode;
+	}
+	else
+		return (0);
+}

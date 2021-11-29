@@ -17,39 +17,44 @@ int _strlen_recursion(char *s)
 }
 
 /**
- * 
- * @brief 
+ * _realloc - Our function realloc
+ * @old:
+ * @len:
+ * @newlen:
+ * Return: Double ptr
  */
-char _realloc (char **old, int len1, int newlen)
+char _realloc(char **old, int len, int newlen)
 {
-char **ptr = malloc (newlen * sizeof(char ptr));
-if (!= ptr)
-{
-free ptr 
-return (NULL);
+	char **ptr = malloc(newlen * sizeof(char *));
+
+	if (!ptr)
+	{
+		free(ptr);
+		return (0);
+	}
+	memcpy(ptr, old, len);
+	free(old);
+	return (ptr);
 }
-}
-memcpy (ptr, old len1)
-free old
-return (ptr)
 /**
- * @brief
- * 
- */
-/**
- * _strncpy - check the code
- * @dest: char1
- * @src: char2
- * @n: int
- * Return: A function
+ * *_strncpy - Copies the string pointed to by src
+ * @dest: check dest
+ * @src: check src
+ * @n: check
+ * Return: The pointer to dest
  */
 char *_strncpy(char *dest, char *src, int n)
 {
-int i;
+	int i;
 
-for (i = 0; i < n && src[i] != '\0'; i++)
-dest[i] = src[i];
-for ( ; i < n; i++)
-dest[i] = '\0';
-return (dest);
+	for (i = 0; i < n && src[i] != '\0'; i++)
+	{
+		dest[i] = src[i];
+	}
+	while (i < n)
+	{
+		dest[i] = '\0';
+		i++;
+	}
+	return (dest);
 }
