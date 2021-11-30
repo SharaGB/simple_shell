@@ -63,52 +63,30 @@ char *_strdup(char *str)
 }
 
 /**
- * @brief 
+ * foun_PATH - 
  * 
+ * @param pathname 
+ * @param mode 
+ * @return int 
  */
+int found_PATH(char *pathname, int mode)
 {
-	char *command_file, *command_path, *path[50];
-	int i;
+	char *path[50];
+	size_t stat_f = 0;
+	char *command_path;
 
-	i = 0;
+	mode = 0;
 	command_path = malloc(sizeof(char) * 50);
-	while (path[i] != NULL)
+	while (path[mode])
 	{
-		_strcat(path[i], command_file, command_path); /* this function is found below */
-		stat_f = access(command_path, X_OK); /* and checks if it exists */
+		_strcat(path[mode], pathname, command_path);
+		stat_f = access(command_path, X_OK); /*Comprueba si existe*/
+		
 		if (stat_f == 0)
-			return (command_path); /* returns the concatenated string if found */
-
-		i++;
+		{
+			return (command_path); /*Devuelve la string concatenada si se encuentra*/
+		}
+		mode++;
 	}
-	return NULL; /* otherwise returns NULL */
-}
-
-
-/**
- * *_strcat - Concatenates two strings
- * @dest: check the string dest
- * @src: check the sting src
- *
- * Return: dest.
- */
-
-char *_strcat(char *dest, char *src)
-{
-	int l;
-	int a;
-
-	l = 0;
-	while (dest[l] != '\0')
-	{
-		l++;
-	}
-	a = 0;
-	while (src[a] != '\0')
-	{
-		dest[l + a] = src[a];
-		a++;
-	}
-	src[a] = '\0';
-	return (dest);
+	return NULL; /*En caso contrario retorna NULL*/
 }

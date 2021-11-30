@@ -5,8 +5,8 @@
  */
 int main(void)
 {
-	size_t linesize = 32;
 	size_t readline = 0;
+	size_t linesize = 32;
 	char *prompt = "$ ";
 	char *line = malloc(sizeof(char) * linesize);
 	/*Bufer para almacenar la entrada del usuario*/

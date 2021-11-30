@@ -17,48 +17,6 @@ int _strlen(char *s)
 }
 
 /**
- * *_strncpy - Copies the string pointed to by src
- * @dest: check dest
- * @src: check src
- * @n: check
- * Return: The pointer to dest
- */
-char *_strncpy(char *dest, char *src, int n)
-{
-	int i;
-
-	for (i = 0; i < n && src[i] != '\0'; i++)
-	{
-		dest[i] = src[i];
-	}
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return (dest);
-}
-
-/**
- * *_memcpy - Copies memory area
- * @dest: Destination of the string
- * @src: Source of the string
- * @n: Number of bytes
- * Return: a pointer to dest
- */
-char *_memcpy(char *dest, char *src, unsigned int n)
-{
-	unsigned int i = 0;
-
-	while (i < n)
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	return (dest);
-}
-
-/**
  * _realloc - Our function realloc
  * @old:
  * @len:
@@ -95,38 +53,29 @@ char *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 }
 
 /**
- * *_strdup - Duplicates a string
- * @str: The string to be duplicated
- * Return: Null
+ * *_strcat - Concatenates two strings
+ * @dest: check the string dest
+ * @src: check the sting src
+ *
+ * Return: dest.
  */
-char *_strdup(char *str)
-{
-	int len = 0;
-	char *ptr;
-	char *dub;
 
-	if (str == NULL)
+char *_strcat(char *dest, char *src)
+{
+	int l;
+	int a;
+
+	l = 0;
+	while (dest[l] != '\0')
 	{
-		return (NULL);
+		l++;
 	}
-	while (str[len] != '\0')
+	a = 0;
+	while (src[a] != '\0')
 	{
-		len++;
+		dest[l + a] = src[a];
+		a++;
 	}
-	ptr = (char *)malloc(sizeof(char) * len + 1);
-	if (ptr == NULL)
-	{
-		free(ptr);
-		return (NULL);
-	}
-	dub = ptr;
-	while (*str)
-	{
-		*dub = *str;
-		dub++;
-		str++;
-	}
-	*dub = '\0';
-	free(ptr);
-	return (ptr);
+	src[a] = '\0';
+	return (dest);
 }
