@@ -1,81 +1,100 @@
 #include "shell.h"
 /**
- * _strlen - The length of a string
- * @s: Check the string
+ * _strcmp - COmpares two strings
+ * @s1: check s1
+ * @s2: check s2
  *
- * Return: Always 0
+ * Return: 0
  */
-int _strlen(char *s)
+int _strcmp(char *s1, char *s2)
 {
-	int leng = 0;
-
-	while (s[leng] != '\0')
+	while (*s1 == *s2 && *s1 != '\0' && *s2 != '\0')
 	{
-		leng++;
+		s1++;
+		s2++;
 	}
-	return (leng);
+	if (*s1 == *s2)
+	{
+		return (0);
+	}
+	else
+	{
+		return (*s1 - *s2);
+	}
 }
 
 /**
- * _realloc - Our function realloc
- * @old:
- * @len:
- * @newlen:
+ * realloc - reallocates a pointer to double the space
+ * @ptr: pointer to the old array
+ * @size: pointer to number of elements in the old array
+ *
+ * Return: pointer to the new array
  */
-char *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
+char **_realloc(char **ptr, size_t *size)
 {
-	void *new_ptr = NULL;
+	char **new;
+	size_t i;
 
-	if (old_size == new_size)
-	{
-		return (ptr);
-	}
-	if (new_size == 0 && ptr)
+	new = malloc(sizeof(char *) * ((*size) + 10));
+	if (new == NULL)
 	{
 		free(ptr);
 		return (NULL);
 	}
-	if (!ptr)
+	for (i = 0; i < (*size); i++)
 	{
-		return (malloc(new_size));
+		new[i] = ptr[i];
 	}
-	new_ptr = (void *)malloc(new_size);
-	if (new_ptr == NULL)
-	{
-		return (NULL);
-	}
-	if (new_ptr)
-	{
-		_memcpy(new_ptr, ptr, old_size);
-		free(ptr);
-	}
-	return (new_ptr);
+	*size += 10;
+	free(ptr);
+	return (new);
 }
 
 /**
  * *_strcat - Concatenates two strings
  * @dest: check the string dest
  * @src: check the sting src
- *
  * Return: dest.
  */
 
 char *_strcat(char *dest, char *src)
 {
-	int l;
-	int a;
+	int i = 0;
+	int j = 0;
 
-	l = 0;
-	while (dest[l] != '\0')
+	while (dest[i] != '\0')
 	{
-		l++;
+		i++;
 	}
-	a = 0;
-	while (src[a] != '\0')
+	while (src[j] != '\0')
 	{
-		dest[l + a] = src[a];
-		a++;
+		dest[i + j] = src[j];
+		j++;
 	}
-	src[a] = '\0';
+	src[j] = '\0';
 	return (dest);
 }
+
+/**
+ * _strcmp - COmpares two strings
+ * @s1: check s1
+ * @s2: check s2
+ * Return: 0
+ */
+int _strcmp(char *s1, char *s2)
+{
+	while (*s1 == *s2 && *s1 != '\0' && *s2 != '\0')
+	{
+		s1++;
+		s2++;
+	}
+	if (*s1 == *s2)
+	{
+		return (0);
+	}
+	else
+	{
+		return (*s1 - *s2);
+	}
+}
+

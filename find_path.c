@@ -9,11 +9,10 @@
 int get_path(char *pathname, char *paths)
 {
 	char *buff, *dup, *path[50];
-	int i;
+	int i = 0;
 
-	i = 0;
 	pathname = "PATH";
-	buff = getenv(pathname); /*Obtener la variable de entorno PATH*/
+	buff = _getenv(pathname); /*Obtener la variable de entorno PATH*/
 	dup = _strdup(buff);
 	paths = strtok(dup, ":");
 	while (paths)
@@ -63,6 +62,30 @@ char *_strdup(char *str)
 }
 
 /**
+ * _getenv - obtain the env variable requested
+ * @name: name of the env varible requested to get
+ * Return: the exact env variable requested
+ */
+char *_getenv(const char *name)
+{
+	int result, i = 0;
+	char *env = NULL;
+	int len = (_strlenconst(name) + 1);
+
+	while (environ[i])
+	{
+		result = strcmp_var(environ[i], name);
+		if (result == 0)
+		{
+			env = environ[i] + len;
+			return (env);
+		}
+		i++;
+	}
+	return (NULL);
+}
+
+/**
  * foun_PATH - 
  * 
  * @param pathname 
@@ -81,12 +104,12 @@ int found_PATH(char *pathname, int mode)
 	{
 		_strcat(path[mode], pathname, command_path);
 		stat_f = access(command_path, X_OK); /*Comprueba si existe*/
-		
+
 		if (stat_f == 0)
 		{
 			return (command_path); /*Devuelve la string concatenada si se encuentra*/
 		}
 		mode++;
 	}
-	return NULL; /*En caso contrario retorna NULL*/
+	return (NULL); /*En caso contrario retorna NULL*/
 }
