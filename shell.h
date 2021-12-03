@@ -16,7 +16,7 @@ extern char **environ;
 #include <fcntl.h>
 
 int interactive_mode(void);
-void split_line(char *str);
+void split_line(char *line);
 int execute(char **command);
 void non_interactive_mode();
 

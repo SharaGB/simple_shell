@@ -15,6 +15,7 @@ int get_path(char *pathname, char *paths)
 	buff = _getenv(pathname); /*Obtener la variable de entorno PATH*/
 	dup = _strdup(buff);
 	paths = strtok(dup, ":");
+
 	while (paths)
 	{
 		path[i] = paths;

@@ -2,7 +2,6 @@
 /**
  * split_line - Function that tokenizes the command line
  * @str: Is the string to be tokenized
- * @str_list: Double pointer that divides by words
  */
 void split_line(char *str)
 {
@@ -11,10 +10,13 @@ void split_line(char *str)
 	int buf = counter(str);
 	char *token_line = NULL;
 
-
 	/*Se usa un delimitador para decir que es el final de una palabra*/
 	tokens = malloc((counter(str) + 1) * sizeof(char *));
-	token_line = strtok(str, DELIMITER); /*Lo almacena dentro de token_linen */
+	if (!tokens)
+	{
+		free(tokens);
+	}
+	token_line = strtok(str, DELIMITER); /*Lo almacena dentro de token_linen*/
 	while (token_line)
 	{
 		tokens[position] = token_line; /*Recorre la acadena en cada posición*/

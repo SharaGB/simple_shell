@@ -9,14 +9,14 @@ int interactive_mode(void)
 	size_t linezise = 0;
 	char *line = NULL;
 
-	signal(SIGINT, handle_signal);
+	signal(SIGINT, handle_signal); /*Manejador de señales, va a ser ignorada*/
 	while (1)
 	{
 		write(STDOUT_FILENO, PROMPT, _strlen(PROMPT));
 		readline = getline(&line, &linezise, stdin);
 		/*Obtiene la línea y la almacena en line*/
-    	line[readline - 1] = 0;
-		if (readline == EOF)
+		line[readline - 1] = 0;
+		if (readline == EOF) /*End of file*/
 		{
 			free(line);
 			write(STDOUT_FILENO, "\n", 1);
@@ -24,7 +24,7 @@ int interactive_mode(void)
 		}
 		split_line(line);
 	}
-    free(line);
+	free(line);
 	return (0);
 }
 
@@ -35,5 +35,5 @@ int interactive_mode(void)
 void handle_signal(int sign __attribute__((unused)))
 {
 	write(STDOUT_FILENO, "\n$ ", 3);
-	fflush(stdout);
+	fflush(stdout); /*Limpia el flujo de la salida estándar*/
 }
