@@ -1,7 +1,7 @@
 #ifndef _SHELL_H_
 #define _SHELL_H_
 
-#define DELIMITER " \n\t"
+#define DELIMITER " \r\t\n"
 #define PROMPT "$ "
 
 extern char **environ;

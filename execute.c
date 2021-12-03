@@ -7,15 +7,16 @@
  */
 int execute(char **command)
 {
-	pid_t pid;
-	int status = 0;
+	pid_t pid = 0;
+    int status = 0;
 
 	pid = fork();
+
 	if (pid == -1)
 	{
 		return (1);
 	}
-	if (pid == 0)
+	if (!pid)
 	{
 		if (execve(command[0], command, environ) == -1)
 		{
@@ -23,6 +24,7 @@ int execute(char **command)
 			exit(EXIT_FAILURE);
 		}
 	}
-	wait(&status);
+    else
+        wait(&status);
 	return (1);
 }
