@@ -8,9 +8,9 @@
 int execute(char **command)
 {
 	pid_t pid;
+	int status = 0;
 
 	pid = fork();
-
 	if (pid == -1)
 	{
 		return (1);
@@ -23,9 +23,6 @@ int execute(char **command)
 			exit(EXIT_FAILURE);
 		}
 	}
-	else
-	{
-		waitpid(pid);
-	}
+	wait(&status);
 	return (1);
 }
