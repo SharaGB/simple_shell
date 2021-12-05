@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 /**
  * split_line - Function that tokenizes the command line
  * @str: Is the string to be tokenized
@@ -12,6 +12,7 @@ void split_line(char *str)
 
 	/*Se usa un delimitador para decir que es el final de una palabra*/
 	tokens = malloc((counter(str) + 1) * sizeof(char *));
+	/*Necesitará reservar memoria para almacenar los tokens*/
 	if (!tokens)
 	{
 		free(tokens);
@@ -19,13 +20,13 @@ void split_line(char *str)
 	token_line = strtok(str, DELIMITER); /*Lo almacena dentro de token_linen*/
 	while (token_line)
 	{
-		tokens[position] = token_line; /*Recorre la acadena en cada posición*/
+		tokens[position] = _strdup(token_line); /*Recorre la str en cada posición*/
 		token_line = strtok(NULL, DELIMITER);
 		/*Se pasa NULL como primer argumento para obtener el siguiente token*/
 		position++;
 
 	}
-	tokens[position] = NULL; /*Establece str_list a NULL*/
-	execute(tokens);
+	tokens[position] = token_line;
+	get_op_func(tokens);
 	free(tokens);
 }

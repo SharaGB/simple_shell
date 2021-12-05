@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 /**
  * get_path - Function that get the variable of PATH environment 
  * 

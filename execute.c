@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 /**
  * execute - Function to execute a program
  * @command: The tokenized array

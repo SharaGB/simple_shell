@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 /**
  * main - Function that write our prompt, mode interactive
  * Return: Always 0
