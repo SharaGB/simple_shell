@@ -12,7 +12,8 @@ int get_func(char **args)
 		{"cd", built_cd},
 		{"exit", built_exit},
 		{"env", built_env},
-		{NULL, NULL}};
+		{NULL, NULL},
+		};
 
 	if (args[0] == NULL)
 	{

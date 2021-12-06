@@ -3,12 +3,12 @@
  * execute - Function to execute a program
  * @command: The tokenized array
  * Return: On success, execve() does not return, on error -1 is returned,
-	   and errno is set to indicate the error.
+ * and errno is set to indicate the error.
  */
 int execute(char **command)
 {
 	pid_t pid = 0;
-    int status = 0;
+	int status = 0;
 
 	pid = fork();
 
@@ -24,7 +24,7 @@ int execute(char **command)
 			exit(EXIT_FAILURE);
 		}
 	}
-    else
-        wait(&status);
+	else
+		wait(&status);
 	return (1);
 }

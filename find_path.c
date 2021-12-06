@@ -23,6 +23,7 @@ int get_path(char *pathname, char *paths)
 		i++;
 	}
 	path[i] = NULL; /*Lo termina con NULL*/
+	return(path);
 }
 
 /**
@@ -75,7 +76,7 @@ char *_getenv(const char *name)
 
 	while (environ[i])
 	{
-		result = strcmp_var(environ[i], name);
+		result = _strcmp(environ[i], name);
 		if (result == 0)
 		{
 			env = environ[i] + len;
@@ -93,17 +94,18 @@ char *_getenv(const char *name)
  * @param mode 
  * @return int 
  */
-int found_PATH(char *pathname, int mode)
+char *found_PATH(char *pathname)
 {
 	char *path[50];
 	size_t stat_f = 0;
 	char *command_path;
+	int mode;
 
 	mode = 0;
 	command_path = malloc(sizeof(char) * 50);
 	while (path[mode])
 	{
-		_strcat(path[mode], pathname, command_path);
+		_strncat(path[mode], pathname, command_path);
 		stat_f = access(command_path, X_OK); /*Comprueba si existe*/
 
 		if (stat_f == 0)
@@ -113,4 +115,45 @@ int found_PATH(char *pathname, int mode)
 		mode++;
 	}
 	return (NULL); /*En caso contrario retorna NULL*/
+}
+
+
+/**
+ * _strcmp - COmpares two strings
+ * @s1: check s1
+ * @s2: check s2
+ *
+ * Return: 0
+ */
+int _strcmp(char *s1, char *s2)
+{
+	while (*s1 == *s2 && *s1 != '\0' && *s2 != '\0')
+	{
+		s1++;
+		s2++;
+	}
+	if (*s1 == *s2)
+	{
+		return (0);
+	}
+	else
+	{
+		return (*s1 - *s2);
+	}
+}
+
+/**
+ * _strlen - The length of a string
+ * @s: Check the string
+ * Return: Always 0
+ */
+int _strlenconst(const char *s)
+{
+	int leng = 0;
+
+	while (s[leng] != '\0')
+	{
+		leng++;
+	}
+	return (leng);
 }

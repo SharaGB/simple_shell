@@ -1,13 +1,16 @@
 #include "main.h"
 /**
  * main - Function that write our prompt, mode interactive
+ * @ac: The number of strings pointed to by argv
+ * @av: Array of string of arguments passed
  * Return: Always 0
  */
 int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 {
+	char *line = NULL;
+	char **args = NULL;
 	size_t readline = 0;
 	size_t linezise = 0;
-	char *line = NULL;
 	int interactive_mode = 0;
 
 	signal(SIGINT, handle_signal); /*Manejador de señales, va a ser ignorada*/
@@ -33,6 +36,10 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 				return (0);
 			}
 			split_line(line);
+			if (!args)
+			{
+				free_args(args);
+			}
 		}
 	}
 	free(line);

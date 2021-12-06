@@ -1,9 +1,8 @@
 #include "main.h"
 /**
- * _strcmp - COmpares two strings
+ * _strcmp - Compares two strings
  * @s1: check s1
  * @s2: check s2
- *
  * Return: 0
  */
 int _strcmp(char *s1, char *s2)
@@ -27,7 +26,6 @@ int _strcmp(char *s1, char *s2)
  * realloc - reallocates a pointer to double the space
  * @ptr: pointer to the old array
  * @size: pointer to number of elements in the old array
- *
  * Return: pointer to the new array
  */
 char **_realloc(char **ptr, size_t *size)
@@ -56,7 +54,6 @@ char **_realloc(char **ptr, size_t *size)
  * @src: check the sting src
  * Return: dest.
  */
-
 char *_strcat(char *dest, char *src)
 {
 	int i = 0;

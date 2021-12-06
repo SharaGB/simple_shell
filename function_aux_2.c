@@ -3,7 +3,7 @@
  * str_concat - Concatenate two string.
  * @s1: Check string 1
  * @s2: Check string 2
- * Return: Best School
+ * Return: str
  */
 char *str_concat(char *s1, char *s2)
 {
@@ -45,7 +45,7 @@ char *str_concat(char *s1, char *s2)
 /**
  * _strlen - The length of a string
  * @s: Check the string
- * Return: Always 0
+ * Return: The leng
  */
 int _strlen(char *s)
 {
@@ -72,14 +72,14 @@ int counter(char *str)
 	{
 		if (*str == ' ' || *str == '\t' || *str == '\n')
 		{
-            i = 0;
-        }
-        else if (i == 0)
-        {
-            i = 1;
-        	count++;
-        }
-        str++;
+			i = 0;
+		}
+		else if (i == 0)
+		{
+			i = 1;
+			count++;
+		}
+		str++;
 	}
 	return (count);
 }
@@ -87,7 +87,7 @@ int counter(char *str)
 /**
  * *_strdup - Contains a copy of the string
  * @str: Check string
- * Return: Null
+ * Return: ptr
  */
 char *_strdup(char *str)
 {
@@ -117,4 +117,31 @@ char *_strdup(char *str)
 	}
 	*dub = '\0';
 	return (ptr);
+}
+
+/**
+ * *_strncat - Concatenates two strings
+ * @dest: check the string dest
+ * @src: check the sting src
+ * @n: check
+ * Return: dest.
+ */
+char *_strncat(char *dest, char *src, int n)
+{
+	int l;
+	int a;
+
+	l = 0;
+	while (dest[l] != '\0')
+	{
+		l++;
+	}
+	a = 0;
+	while (a < n && src[a] != '\0')
+	{
+		dest[l] = src[a];
+		a++;
+		l++;
+	}
+	return (dest);
 }

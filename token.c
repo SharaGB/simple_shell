@@ -2,6 +2,7 @@
 /**
  * split_line - Function that tokenizes the command line
  * @str: Is the string to be tokenized
+ * Return: 0
  */
 void split_line(char *str)
 {
@@ -16,6 +17,7 @@ void split_line(char *str)
 	if (!tokens)
 	{
 		free(tokens);
+		exit(EXIT_FAILURE);
 	}
 	token_line = strtok(str, DELIMITER); /*Lo almacena dentro de token_linen*/
 	while (token_line)
@@ -24,9 +26,8 @@ void split_line(char *str)
 		token_line = strtok(NULL, DELIMITER);
 		/*Se pasa NULL como primer argumento para obtener el siguiente token*/
 		position++;
-
 	}
 	tokens[position] = token_line;
-	get_op_func(tokens);
+	built_help(tokens);
 	free(tokens);
 }
