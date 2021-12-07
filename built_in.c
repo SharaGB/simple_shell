@@ -13,7 +13,6 @@ int get_func(char **args)
 		{"env", built_env, "help_env"},
 		{"help", built_help, "help_help"},
 		{"exit", built_exit, "help_exit"},
-
 		{NULL, NULL, NULL}
 		};
 
@@ -83,8 +82,9 @@ int built_env(char **args __attribute__((unused)))
 }
 
 /**
- * @brief 
- * 
+ * built_help - Function describing command help
+ * @args: Arguments passed to the function
+ * Return: The text that can be read, or 1 if it fails
  */
 int built_help(char **args)
 {
