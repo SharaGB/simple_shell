@@ -1,8 +1,8 @@
 #include "main.h"
 /**
  * main - Function that write our prompt, mode interactive
- * @ac: The number of strings pointed to by argv
- * @av: Array of string of arguments passed
+ * @ac: Is the number of items in av
+ * @av: Is a NULL terminated array of strings
  * Return: Always 0
  */
 int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
@@ -36,7 +36,7 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 				return (0);
 			}
 			split_line(line);
-			if (!args)
+			if (args)
 			{
 				free_args(args);
 			}
@@ -52,6 +52,6 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
  */
 void handle_signal(int sign __attribute__((unused)))
 {
-	write(STDOUT_FILENO, "\n$ ", 3);
+	write(STDOUT_FILENO, "\n🧿 $ ", 9);
 	fflush(stdout); /*Limpia el flujo de la salida estándar*/
 }

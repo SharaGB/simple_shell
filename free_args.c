@@ -5,8 +5,8 @@
  */
 void free_args(char **args)
 {
-	int i;
-	int height;
+	int i = 0;
+	int height = 0;
 
 	for (i = 0; i < height; i++)
 	{

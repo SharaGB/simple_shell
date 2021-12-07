@@ -28,6 +28,6 @@ void split_line(char *str)
 		position++;
 	}
 	tokens[position] = token_line;
-	built_help(tokens);
+	get_func(tokens);
 	free(tokens);
 }

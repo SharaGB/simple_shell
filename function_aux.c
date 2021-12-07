@@ -23,53 +23,29 @@ int _strcmp(char *s1, char *s2)
 }
 
 /**
- * realloc - reallocates a pointer to double the space
- * @ptr: pointer to the old array
- * @size: pointer to number of elements in the old array
- * Return: pointer to the new array
+ * counter - Function that counter of words in a string
+ * @str: the string
+ * Return: The counter
  */
-char **_realloc(char **ptr, size_t *size)
-{
-	char **new;
-	size_t i;
-
-	new = malloc(sizeof(char *) * ((*size) + 10));
-	if (new == NULL)
-	{
-		free(ptr);
-		return (NULL);
-	}
-	for (i = 0; i < (*size); i++)
-	{
-		new[i] = ptr[i];
-	}
-	*size += 10;
-	free(ptr);
-	return (new);
-}
-
-/**
- * *_strcat - Concatenates two strings
- * @dest: check the string dest
- * @src: check the sting src
- * Return: dest.
- */
-char *_strcat(char *dest, char *src)
+int counter(char *str)
 {
 	int i = 0;
-	int j = 0;
+	int count = 0;
 
-	while (dest[i] != '\0')
+	while (*str)
 	{
-		i++;
+		if (*str == ' ' || *str == '\t' || *str == '\n')
+		{
+			i = 0;
+		}
+		else if (i == 0)
+		{
+			i = 1;
+			count++;
+		}
+		str++;
 	}
-	while (src[j] != '\0')
-	{
-		dest[i + j] = src[j];
-		j++;
-	}
-	src[j] = '\0';
-	return (dest);
+	return (count);
 }
 
 /**
@@ -99,4 +75,44 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	close(fd);
 
 	return (sz_wr);
+}
+
+/**
+ * _getenv - Function to obtain the variable env
+ * @name: Name of variable
+ * Return: NULL
+ */
+char *_getenv(const char *name)
+{
+	int result, i = 0;
+	char *env = NULL;
+	int len = (_strlenconst(name) + 1);
+
+	while (environ[i])
+	{
+		result = str_cmp(environ[i], name);
+		if (result == 0)
+		{
+			env = environ[i] + len;
+			return (env);
+		}
+		i++;
+	}
+	return (NULL);
+}
+
+/**
+ * _strlen - The length of a string
+ * @s: Check the string
+ * Return: The leng
+ */
+int _strlenconst(const char *s)
+{
+	int leng = 0;
+
+	while (s[leng] != '\0')
+	{
+		leng++;
+	}
+	return (leng);
 }

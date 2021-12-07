@@ -9,22 +9,33 @@ int execute(char **command)
 {
 	pid_t pid = 0;
 	int status = 0;
+	pid_t my_pid = 0;
+	int stat_p = 0;
+	char *pathname = NULL;
 
-	pid = fork();
-
+	pathname = _which(command[0], &stat_p);
+	if (!stat_p)
+	{
+		return (1);
+	}
+	pid = fork(); /*Se crea un nuevo proceso*/
 	if (pid == -1)
 	{
+		perror("Error:");
 		return (1);
 	}
 	if (!pid)
 	{
-		if (execve(command[0], command, environ) == -1)
+		if (execve(pathname, command, environ) == -1) /*Ejecuta el nuevo programa*/
 		{
 			perror("./shell");
 			exit(EXIT_FAILURE);
 		}
 	}
 	else
-		wait(&status);
-	return (1);
+		waitpid(pid, &status, 0); /*Espera a que el proceso hijo termine*/
+	free (pathname);
+	my_pid = getpid(); /*Recupero el ID del proceso actual*/
+
+	return (0);
 }

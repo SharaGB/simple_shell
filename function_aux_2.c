@@ -7,7 +7,7 @@
  */
 char *str_concat(char *s1, char *s2)
 {
-	char *str;
+	char *str = NULL;
 	int len1, len2, i, j;
 
 	if (s1 == NULL)
@@ -32,6 +32,8 @@ char *str_concat(char *s1, char *s2)
 		str[i] = s1[i];
 		i++;
 	}
+	str[i] = '/';
+	i++;
 	j = 0;
 	while (s2[j] != '\0')
 	{
@@ -56,32 +58,6 @@ int _strlen(char *s)
 		leng++;
 	}
 	return (leng);
-}
-
-/**
- * counter - Function that counter of words in a string
- * @str: the string
- * Return: The counter
- */
-int counter(char *str)
-{
-	int i = 0;
-	int count = 0;
-
-	while (*str)
-	{
-		if (*str == ' ' || *str == '\t' || *str == '\n')
-		{
-			i = 0;
-		}
-		else if (i == 0)
-		{
-			i = 1;
-			count++;
-		}
-		str++;
-	}
-	return (count);
 }
 
 /**
@@ -120,28 +96,59 @@ char *_strdup(char *str)
 }
 
 /**
- * *_strncat - Concatenates two strings
- * @dest: check the string dest
- * @src: check the sting src
- * @n: check
- * Return: dest.
+ *w_strdupp - returns a pointer to a newly allocated space in memory an copied
+ *@str: the string that we copied
+ *Return: a pointer
  */
-char *_strncat(char *dest, char *src, int n)
+char *_str_dup(char *str)
 {
-	int l;
-	int a;
+	int len = 0, i = 0;
+	char *dup;
+	char *duppass;
 
-	l = 0;
-	while (dest[l] != '\0')
+	if (str == NULL)
 	{
-		l++;
+		return (NULL);
 	}
-	a = 0;
-	while (a < n && src[a] != '\0')
+	len = _strlen(str);
+	dup = malloc(sizeof(char) * len + 1);
+	if (dup == NULL)
 	{
-		dest[l] = src[a];
-		a++;
-		l++;
+		return (NULL);
 	}
-	return (dest);
+	duppass = dup;
+	while (str[i] != ':' && str[i] != '\0')
+	{
+		*duppass = str[i];
+		duppass++;
+		i++;
+	}
+	*duppass = '\0';
+	return (dup);
+}
+
+/**
+ * strcmp_var - find the env variable wated
+ *@s1: first string to be compare
+ *@s2: the stting that matches with first one
+ *
+ *Return: 0 as matched. 1 as unmatched
+ */
+int str_cmp(char *s1, const char *s2)
+{
+	int i = 0, j = 0;
+
+	while (s1[j] != '=')
+	{
+		if (s1[j] != s2[j])
+		{
+			i = 1;
+			break;
+		}
+		j++;
+	}
+	if (i == 0)
+		return (0);
+	else
+		return (1);
 }

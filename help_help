@@ -1,0 +1,10 @@
+help help
+    help: help [command]
+        Display information about builtin commands.
+        Displays brief summaries of builtin commands.
+
+Exit Status:
+    Returns success unless PATTERN is not found or an invalid option is given.
+
+    So that's what help command does telling everything
+    about the command and helping you out.

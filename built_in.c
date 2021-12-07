@@ -10,9 +10,11 @@ int get_func(char **args)
 
 	our_built_in built_in[] = {
 		{"cd", built_cd},
-		{"exit", built_exit},
-		{"env", built_env},
-		{NULL, NULL},
+		{"env", built_env, "help_env"},
+		{"help", built_help, "help_help"},
+		{"exit", built_exit, "help_exit"},
+
+		{NULL, NULL, NULL}
 		};
 
 	if (args[0] == NULL)
@@ -58,7 +60,7 @@ int built_cd(char **args)
  */
 int built_exit(char **args __attribute__((unused)))
 {
-	free(args);
+	free_args(args);
 	exit(EXIT_SUCCESS);
 }
 
@@ -75,6 +77,37 @@ int built_env(char **args __attribute__((unused)))
 	{
 		write(STDOUT_FILENO, environ[i], _strlen(environ[i]));
 		write(STDOUT_FILENO, "\n", 1);
+		i++;
+	}
+	return (1);
+}
+
+/**
+ * @brief 
+ * 
+ */
+int built_help(char **args)
+{
+	int i = 0;
+
+	our_built_in built_in[] = {
+		{"cd", built_cd},
+		{"env", built_env, "help_env"},
+		{"help", built_help, "help_help"},
+		{"exit", built_exit, "help_exit"},
+		{NULL, NULL, NULL}
+		};
+
+	if (args[1] == NULL)
+	{
+		read_textfile("help_built_in", 1024);
+	}
+	while (built_in[i].name != NULL)
+	{
+		if (_strcmp(args[1], built_in[i].name) == 0)
+		{
+			read_textfile(built_in[i].help, 1024);
+		}
 		i++;
 	}
 	return (1);
