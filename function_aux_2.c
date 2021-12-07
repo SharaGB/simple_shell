@@ -61,9 +61,9 @@ int _strlen(char *s)
 }
 
 /**
- * *_strdup - Contains a copy of the string
+ * _strdup - Contains a copy of the string
  * @str: Check string
- * Return: ptr
+ * Return: A pointer
  */
 char *_strdup(char *str)
 {
@@ -96,9 +96,9 @@ char *_strdup(char *str)
 }
 
 /**
- *w_strdupp - returns a pointer to a newly allocated space in memory an copied
- *@str: the string that we copied
- *Return: a pointer
+ *_str_dup - Contains a copy of the string
+ *@str: Check string
+ *Return: A pointer
  */
 char *_str_dup(char *str)
 {
@@ -128,11 +128,10 @@ char *_str_dup(char *str)
 }
 
 /**
- * strcmp_var - find the env variable wated
- *@s1: first string to be compare
- *@s2: the stting that matches with first one
- *
- *Return: 0 as matched. 1 as unmatched
+ * str_cmp - Compares str pointed to by str1 with the str pointed to by str2
+ *@s1: First string to be compared.
+ *@s2: Second string to be compared.
+ *Return: 0
  */
 int str_cmp(char *s1, const char *s2)
 {
