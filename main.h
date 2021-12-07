@@ -38,7 +38,7 @@ void non_interactive_mode(void);
 int get_func(char **args);
 int built_cd(char **args);
 int built_help(char **args);
-char *_which(char *command, int *path);
+char *_which(char *command);
 int built_env(char **args __attribute__((unused)));
 int built_exit(char **args __attribute__((unused)));
 

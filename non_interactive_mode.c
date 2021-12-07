@@ -1,7 +1,7 @@
 #include "main.h"
 /**
  * non_interactive_mode - Non-interactive printing function
- *
+ * Return: Void
  */
 void non_interactive_mode(void)
 {

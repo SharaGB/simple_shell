@@ -5,7 +5,7 @@
  * @stat_path: number to check user type the full path.
  * Return: The path with the executable command or NULL if doesn't exist.
  */
-char *_which(char *command, int *path)
+char *_which(char *command)
 {
 	char *tmp = NULL;
 	char *buff = NULL;
@@ -17,7 +17,6 @@ char *_which(char *command, int *path)
 
 	if (stat(command, &st) == 0)
 	{
-		*path = 1;
 		return (command);
 	}
 	else
