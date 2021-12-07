@@ -10,14 +10,9 @@ int execute(char **command)
 	pid_t pid = 0;
 	int status = 0;
 	pid_t my_pid = 0;
-	int stat_p = 0;
 	char *pathname = NULL;
 
-	pathname = _which(command[0], &stat_p);
-	if (!stat_p)
-	{
-		return (1);
-	}
+	pathname = _which(command[0]);
 	pid = fork(); /*Se crea un nuevo proceso*/
 	if (pid == -1)
 	{
@@ -34,7 +29,6 @@ int execute(char **command)
 	}
 	else
 		waitpid(pid, &status, 0); /*Espera a que el proceso hijo termine*/
-	free (pathname);
 	my_pid = getpid(); /*Recupero el ID del proceso actual*/
 
 	return (0);
