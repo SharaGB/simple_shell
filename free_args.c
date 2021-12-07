@@ -6,11 +6,11 @@
 void free_args(char **args)
 {
 	int i = 0;
-	int height = 0;
 
-	for (i = 0; i < height; i++)
+	while (i < _strlen(args[i]))
 	{
 		free(args[i]);
+		i++;
 	}
 	free(args);
 }
