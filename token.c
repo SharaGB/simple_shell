@@ -8,7 +8,6 @@ void split_line(char *str)
 {
 	int position = 0;
 	char **tokens = NULL;
-	int buf = counter(str);
 	char *token_line = NULL;
 
 	/*Se usa un delimitador para decir que es el final de una palabra*/

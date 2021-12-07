@@ -9,7 +9,7 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 {
 	char *line = NULL;
 	char **args = NULL;
-	size_t readline = 0;
+	int readline = 0;
 	size_t linezise = 0;
 	int interactive_mode = 0;
 

@@ -1,17 +1,16 @@
 #include "main.h"
 /**
- * _which - search the full path and concatenates whit the command.
- * @command: name of the command.
- * @stat_path: number to check user type the full path.
- * Return: The path with the executable command or NULL if doesn't exist.
+ * _which - Function that searches for the PATH and concatenates
+ * @command: Check command
+ * Return: PATH or NULL if doesn't exist
  */
 char *_which(char *command)
 {
 	char *tmp = NULL;
 	char *buff = NULL;
 	int stat_f = 0, len = 0;
-    char *pathname = "PATH";
-    char *command_path = NULL;
+	char *pathname = "PATH";
+	char *command_path = NULL;
 
 	struct stat st;
 
@@ -29,7 +28,8 @@ char *_which(char *command)
 			command_path = str_concat(tmp, command);
 			if (stat(command_path, &st) == 0)
 			{
-				stat_f = access(command_path, X_OK); /*Comprueba si existe y tena permisos*/
+				stat_f = access(command_path, X_OK);
+				/*Comprueba si existe y tenga permisos*/
 				if (stat_f == 0)
 				{
 					free(tmp);

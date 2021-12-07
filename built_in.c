@@ -9,7 +9,7 @@ int get_func(char **args)
 	int i = 0;
 
 	our_built_in built_in[] = {
-		{"cd", built_cd},
+		{"cd", built_cd, "help_cd"},
 		{"env", built_env, "help_env"},
 		{"help", built_help, "help_help"},
 		{"exit", built_exit, "help_exit"},
@@ -59,7 +59,6 @@ int built_cd(char **args)
  */
 int built_exit(char **args __attribute__((unused)))
 {
-	free_args(args);
 	exit(EXIT_SUCCESS);
 }
 
@@ -91,7 +90,7 @@ int built_help(char **args)
 	int i = 0;
 
 	our_built_in built_in[] = {
-		{"cd", built_cd},
+		{"cd", built_cd, "help_cd"},
 		{"env", built_env, "help_env"},
 		{"help", built_help, "help_help"},
 		{"exit", built_exit, "help_exit"},

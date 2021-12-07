@@ -5,9 +5,6 @@
 #define PROMPT "🧿 $ "
 
 extern char **environ;
-static char *search_path[10];
-typedef void (*sighandler_t)(int);
-static char *my_argv[100], *my_envp[100];
 
 #include <stdio.h>	/*perror*/
 #include <stdlib.h> /*malloc, free, exit, EXIT_SUCCESS, EXIT_FAILURE*/
@@ -23,6 +20,7 @@ static char *my_argv[100], *my_envp[100];
  * struct builtin - Struct builtin
  * @name: The operator
  * @f: The function associated
+ * @help: Built-in help
  */
 typedef struct builtin
 {
