@@ -79,19 +79,19 @@ ssize_t read_textfile(const char *filename, size_t letters)
 
 /**
  * _getenv - Function to obtain the variable env
- * @name: Name of variable
+ * @s: Name of variable
  * Return: NULL
  */
-char *_getenv(const char *name)
+char *_getenv(const char *s)
 {
-	int result, i = 0;
+	int aux, i = 0;
 	char *env = NULL;
-	int len = (_strlenconst(name) + 1);
+	int len = (_strlenconst(s) + 1);
 
 	while (environ[i])
 	{
-		result = str_cmp(environ[i], name);
-		if (result == 0)
+		aux = str_cmp(environ[i], s);
+		if (aux == 0)
 		{
 			env = environ[i] + len;
 			return (env);
@@ -102,7 +102,7 @@ char *_getenv(const char *name)
 }
 
 /**
- * _strlen - The length of a string
+ * _strlenconst - The length of a string
  * @s: Check the string
  * Return: The leng
  */
