@@ -11,7 +11,6 @@ extern char **environ;
 #include <unistd.h> /*fork, pid_t, execve, access, getpid*/
 #include <string.h> /*strcmp, strtok*/
 #include <signal.h>
-#include <stddef.h>
 #include <fcntl.h>
 #include <sys/wait.h> /*waitpid*/
 #include <sys/stat.h> /*stat*/
