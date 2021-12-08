@@ -11,10 +11,9 @@ void non_interactive_mode(void)
 
 	readline = getline(&line, &linezise, stdin);
 	/*Obtiene la línea y la almacena en line*/
-	if (readline)
-	{
-		exit(EXIT_SUCCESS);
-	}
+	line[readline - 1] = 0;
+
 	split_line(line);
+	exit(EXIT_SUCCESS);
 	free(line);
 }

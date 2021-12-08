@@ -10,6 +10,7 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 	int readline = 0;
 	char *line = NULL;
 	size_t linezise = 0;
+	int interactive_mode = 0;
 
 	signal(SIGINT, handle_signal); /*Manejador de señales, va a ser ignorada*/
 	if (isatty(STDIN_FILENO) == 0) /*Descriptor de archivo de la entrada std*/
@@ -17,18 +18,21 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 		non_interactive_mode();
 		return (0);
 	}
-	while (1)
+	while (!interactive_mode)
 	{
-		write(STDOUT_FILENO, PROMPT, _strlen(PROMPT));
-		readline = getline(&line, &linezise, stdin);
-		/*Obtiene la línea y la almacena en line*/
-		if (readline == EOF) /*End of file*/
+		while (1)
 		{
-			free(line);
-			write(STDOUT_FILENO, "\n", 1);
-			return (0);
+			write(STDOUT_FILENO, PROMPT, _strlen(PROMPT));
+			readline = getline(&line, &linezise, stdin);
+			/*Obtiene la línea y la almacena en line*/
+			if (readline == EOF) /*End of file*/
+			{
+				free(line);
+				write(STDOUT_FILENO, "\n", 1);
+				return (0);
+			}
+			split_line(line);
 		}
-		split_line(line);
 	}
 	free(line);
 	return (0);
