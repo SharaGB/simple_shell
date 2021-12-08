@@ -1,4 +1,7 @@
-# [] simple_shell
+# <a href="url"><img src="https://user-images.githubusercontent.com/90220978/145126989-7e3c2c83-88fc-477c-ad07-6294086651c2.jpg" align="middle" width="100" height="100"></a> simple_shell
+
+![bashshell](https://user-images.githubusercontent.com/90220978/145126786-e6ada7f9-5a6e-4b41-b577-c3ec4a3ae756.png)
+
 
 **Table of Contents**
 - [Simple Shell](#simple-shell)
