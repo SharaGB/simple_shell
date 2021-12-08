@@ -51,13 +51,13 @@ char *str_concat(char *s1, char *s2)
  */
 int _strlen(char *s)
 {
-	int leng = 0;
+	int len = 0;
 
-	while (s[leng] != '\0')
+	while (s[len] != '\0')
 	{
-		leng++;
+		len++;
 	}
-	return (leng);
+	return (len);
 }
 
 /**

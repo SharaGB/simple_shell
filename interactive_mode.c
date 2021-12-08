@@ -1,8 +1,6 @@
 #include "main.h"
 /**
  * main - Function that write our prompt, mode interactive
- * @ac: Is the number of items in av
- * @av: Is a NULL terminated array of strings
  * Return: Always 0
  */
 int main(void)
@@ -10,7 +8,9 @@ int main(void)
 	int readline = 0;
 	char *line = NULL;
 	size_t linezise = 0;
+	char *prompt = "🧿 $ ";
 	int interactive_mode = 0;
+
 
 	signal(SIGINT, handle_signal); /*Manejador de señales, va a ser ignorada*/
 	if (isatty(STDIN_FILENO) == 0) /*Descriptor de archivo de la entrada std*/
@@ -22,7 +22,7 @@ int main(void)
 	{
 		while (1)
 		{
-			write(STDOUT_FILENO, PROMPT, _strlen(PROMPT));
+			write(STDOUT_FILENO, prompt, _strlen(prompt));
 			readline = getline(&line, &linezise, stdin);
 			/*Obtiene la línea y la almacena en line*/
 			if (readline == EOF) /*End of file*/

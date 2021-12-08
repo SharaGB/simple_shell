@@ -108,11 +108,11 @@ char *_getenv(const char *s)
  */
 int _strlenconst(const char *s)
 {
-	int leng = 0;
+	int len = 0;
 
-	while (s[leng] != '\0')
+	while (s[len] != '\0')
 	{
-		leng++;
+		len++;
 	}
-	return (leng);
+	return (len);
 }

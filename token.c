@@ -9,8 +9,9 @@ void split_line(char *str)
 	int position = 0;
 	char **tokens = NULL;
 	char *token_line = NULL;
-
+	char *delimiter = " \t\n";
 	/*Se usa un delimitador para decir que es el final de una palabra*/
+
 	tokens = malloc((counter(str) + 1) * sizeof(char *));
 	/*Necesitará reservar memoria para almacenar los tokens*/
 	if (!tokens)
@@ -18,11 +19,11 @@ void split_line(char *str)
 		free(tokens);
 		exit(1);
 	}
-	token_line = strtok(str, DELIMITER); /*Lo almacena dentro de token_linen*/
+	token_line = strtok(str, delimiter); /*Lo almacena dentro de token_linen*/
 	while (token_line)
 	{
 		tokens[position] = _strdup(token_line); /*Recorre la str en cada posición*/
-		token_line = strtok(NULL, DELIMITER);
+		token_line = strtok(NULL, delimiter);
 		/*Se pasa NULL como primer argumento para obtener el siguiente token*/
 		position++;
 	}
