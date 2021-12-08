@@ -27,6 +27,5 @@ int execute(char **command)
 	}
 	else
 		waitpid(pid, &status, 0); /*Espera a que el proceso hijo termine*/
-
 	return (0);
 }

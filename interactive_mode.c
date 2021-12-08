@@ -8,7 +8,6 @@ int main(void)
 	int readline = 0;
 	char *line = NULL;
 	size_t linezise = 0;
-	char *prompt = "🧿 $ ";
 	int interactive_mode = 0;
 
 
@@ -22,7 +21,7 @@ int main(void)
 	{
 		while (1)
 		{
-			write(STDOUT_FILENO, prompt, _strlen(prompt));
+			write(STDOUT_FILENO, PROMPT, _strlen(PROMPT));
 			readline = getline(&line, &linezise, stdin);
 			/*Obtiene la línea y la almacena en line*/
 			if (readline == EOF) /*End of file*/

@@ -43,5 +43,6 @@ char *_which(char *command)
 			}
 		}
 	}
+	free(pathname);
 	return (NULL); /*En caso contrario retorna NULL*/
 }
