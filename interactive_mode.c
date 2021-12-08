@@ -10,30 +10,25 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 	int readline = 0;
 	char *line = NULL;
 	size_t linezise = 0;
-	int interactive_mode = 0;
 
 	signal(SIGINT, handle_signal); /*Manejador de señales, va a ser ignorada*/
 	if (isatty(STDIN_FILENO) == 0) /*Descriptor de archivo de la entrada std*/
 	{
 		non_interactive_mode();
-		return (1);
+		return (0);
 	}
-	while (!interactive_mode)
+	while (1)
 	{
-		interactive_mode = isatty(STDIN_FILENO);
-		while (1)
+		write(STDOUT_FILENO, PROMPT, _strlen(PROMPT));
+		readline = getline(&line, &linezise, stdin);
+		/*Obtiene la línea y la almacena en line*/
+		if (readline == EOF) /*End of file*/
 		{
-			write(STDOUT_FILENO, PROMPT, _strlen(PROMPT));
-			readline = getline(&line, &linezise, stdin);
-			/*Obtiene la línea y la almacena en line*/
-			if (readline == EOF) /*End of file*/
-			{
-				free(line);
-				write(STDOUT_FILENO, "\n", 1);
-				return (0);
-			}
-			split_line(line);
+			free(line);
+			write(STDOUT_FILENO, "\n", 1);
+			return (0);
 		}
+		split_line(line);
 	}
 	free(line);
 	return (0);

@@ -34,7 +34,6 @@ char *str_concat(char *s1, char *s2)
 	}
 	str[i] = '/';
 	i++;
-	str[i] = '\0';
 	j = 0;
 	while (s2[j] != '\0')
 	{
@@ -80,7 +79,7 @@ char *_strdup(char *str)
 	{
 		len++;
 	}
-	ptr = (char *)malloc(sizeof(char) * len + 1);
+	ptr = malloc(sizeof(char) * len + 1);
 	if (ptr == NULL)
 	{
 		return (NULL);
