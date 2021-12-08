@@ -9,7 +9,6 @@ int execute(char **command)
 {
 	pid_t pid = 0;
 	int status = 0;
-	pid_t my_pid = 0;
 	char *pathname = NULL;
 
 	pathname = _which(command[0]);
