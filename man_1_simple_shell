@@ -1,0 +1,91 @@
+.\" Manpage for _printf.
+.TH _printf (3) "08 Nov 2021" "_printf man page"
+
+.SH NAME
+       _printf \- formatted output conversion
+
+.SH SYNOPSIS
+
+.B #include \"main.h"
+       int _printf(const char *format, ...)
+
+.B #include <stdarg.h>
+       int print_char(va_list c);
+       int print_str(va_list s);
+       int print_perc(va_list p);
+       int print_dec(va_list d);
+       int print_int(va_list i);
+       int print_b(va_list d);
+       int print_chars(char *str);
+       int print_oct(va_list d);
+
+.SH DESCRIPTION
+.B _printf() produce output according to a format.
+       The function _printf() write output to stdout, the standard output
+       stream. Show the string, number decimal or any other format specifier
+       created by the user. Returns the number of characters that are printed.
+
+.br
+.PP The functions print_char(), print_str(), print_perc(), print_dec(),
+       print_int(), print_b(), print_chars(), print_oct() are equivalent to
+       the function _printf() , respectively, except that they are called
+       with a va_list instead of a variable number of arguments.
+
+.br
+.PP Format of the format string
+       The format string is a character string, beginning and ending in
+       its initial shift state, if any.  The format string is composed
+       of zero or more directives: ordinary characters (not %), which
+       are copied unchanged to the output stream; and conversion
+       specifications, each of which results in fetching zero or more
+       subsequent arguments.  Each conversion specification is
+       introduced by the character %, and ends with a conversion
+       specifier.  In between there may be (in this order) zero or more
+       flags, an optional minimum field width, an optional precision and
+       an optional length modifier.
+
+.br
+.PP Conversion specifiers
+       A character that specifies the type of conversion to be applied.
+       The conversion specifiers and their meanings are:
+
+.TP
+.B d, i
+       Integer in decimal base with sign.
+
+.TP
+.B c
+       character output.
+
+.TP
+.B s
+       Prints the characters from the given address until a null
+       character is found.
+
+.TP
+.B b
+       convert a decimal to binary.
+
+.TP
+.B o, u, x, X
+       The unsigned int argument is converted to unsigned octal
+       (o), unsigned decimal (u), or unsigned hexadecimal (x and
+       X) notation.  The letters abcdef are used for x
+       conversions; the letters ABCDEF are used for X conversions.
+
+.TP
+.B %
+       A '%' is written.  No argument is converted.  The complete
+       conversion specification is '%%'.
+
+.SH RETURN VALUE
+       This function returns the length string of the number of characters
+       printed.
+.br
+
+.SH BUGS
+       No known bugs.
+
+.SH AUTHOR
+       Daniel Duarte Palacios, 3811@holbertonscool.com
+       Shara García Betancur, 3779@holbertonscool.com

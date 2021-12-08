@@ -26,7 +26,12 @@ void split_line(char *str)
 		/*Se pasa NULL como primer argumento para obtener el siguiente token*/
 		position++;
 	}
-	tokens[position] = token_line;
+	tokens[position] = NULL;
+	free(token_line);
 	get_func(tokens);
+	for (position = 0; tokens[position]; position++)
+	{
+		free(tokens[position]);
+	}
 	free(tokens);
 }

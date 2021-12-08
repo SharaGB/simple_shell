@@ -21,7 +21,7 @@ char *str_concat(char *s1, char *s2)
 	}
 	len2 = _strlen(s2);
 
-	str = (char *)malloc((len1 + len2 + 1) * sizeof(char));
+	str = (char *)malloc((len1 + len2) * sizeof(char) + 2);
 	if (str == NULL)
 	{
 		return (NULL);
@@ -34,6 +34,7 @@ char *str_concat(char *s1, char *s2)
 	}
 	str[i] = '/';
 	i++;
+	str[i] = '\0';
 	j = 0;
 	while (s2[j] != '\0')
 	{

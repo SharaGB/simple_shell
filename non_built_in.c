@@ -28,7 +28,6 @@ char *_which(char *command)
 			command_path = str_concat(tmp, command);
 			if (stat(command_path, &st) == 0)
 			{
-				stat_f = access(command_path, X_OK);
 				/*Comprueba si existe y tenga permisos*/
 				if (stat_f == 0)
 				{

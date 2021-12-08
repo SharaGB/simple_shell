@@ -27,6 +27,6 @@ int execute(char **command)
 	}
 	else
 		wait(&status); /*Espera a que el proceso hijo termine*/
-
+	free(pathname);
 	return (0);
 }
