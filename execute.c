@@ -16,14 +16,13 @@ int execute(char **command)
 	pid = fork(); /*Se crea un nuevo proceso*/
 	if (pid == -1)
 	{
-		perror("Error:");
 		return (1);
 	}
 	if (!pid)
 	{
 		if (execve(pathname, command, environ) == -1) /*Ejecuta el nuevo programa*/
 		{
-			perror("./shell");
+			write(STDOUT_FILENO, "./shell: No such file or directory\n", 36);
 			exit(EXIT_FAILURE);
 		}
 	}

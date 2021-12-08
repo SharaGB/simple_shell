@@ -38,15 +38,15 @@ int get_func(char **args)
  */
 int built_cd(char **args)
 {
-	if (args[1] == NULL)
+	if (args[0] == NULL)
 	{
-		perror("lsh: expected argument to \"cd\"");
+		perror("cd");
 	}
 	else
 	{
-		if (chdir(args[1]) != 0)
+		if (chdir(args[0]) != 0)
 		{
-			perror("lsh");
+			perror("cd");
 		}
 	}
 	return (1);

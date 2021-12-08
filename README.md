@@ -102,7 +102,7 @@ $
 - [x] Implement the env built-in
 - [x] Uses exit status
 - [x] Shell continues upon ***Crtl+C***
-- [x] Implement the help built-in
+- [x] Implement the help [built-in]
 
 
 ## Man
