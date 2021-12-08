@@ -11,7 +11,7 @@ void split_line(char *str)
 	char *token_line = NULL;
 
 	/*Se usa un delimitador para decir que es el final de una palabra*/
-	tokens = malloc((counter(str) + 1) * sizeof(char *));
+	tokens = malloc(sizeof(char *) * 1024);
 	/*Necesitará reservar memoria para almacenar los tokens*/
 	if (!tokens)
 	{
@@ -27,11 +27,6 @@ void split_line(char *str)
 		position++;
 	}
 	tokens[position] = NULL;
-	free(token_line);
 	get_func(tokens);
-	for (position = 0; tokens[position]; position++)
-	{
-		free(tokens[position]);
-	}
 	free(tokens);
 }

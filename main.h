@@ -2,7 +2,7 @@
 #define _SHELL_H_
 
 #define DELIMITER " \t\n"
-#define PROMPT "$ "
+#define PROMPT "🧿 $ "
 
 extern char **environ;
 
@@ -39,14 +39,13 @@ int built_help(char **args);
 char *_which(char *command);
 int built_env(char **args __attribute__((unused)));
 int built_exit(char **args __attribute__((unused)));
-
-void free_args(char **args);
 void handle_signal(int sign __attribute__((unused)));
 
 int _strlen(char *s);
 int counter(char *str);
 char *_strdup(char *str);
 char *_str_dup(char *str);
+void free_args(char **args);
 int _strcmp(char *s1, char *s2);
 int _strlenconst(const char *s);
 char *_getenv(const char *name);

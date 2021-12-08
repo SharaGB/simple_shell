@@ -23,7 +23,7 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 		interactive_mode = isatty(STDIN_FILENO);
 		while (1)
 		{
-			write(STDOUT_FILENO, PROMPT, 2);
+			write(STDOUT_FILENO, PROMPT, _strlen(PROMPT));
 			readline = getline(&line, &linezise, stdin);
 			/*Obtiene la línea y la almacena en line*/
 			if (readline == EOF) /*End of file*/
@@ -45,6 +45,6 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
  */
 void handle_signal(int sign __attribute__((unused)))
 {
-	write(STDOUT_FILENO, "\n$ ", 3);
+	write(STDOUT_FILENO, "\n🧿 $ ", 9);
 	fflush(stdout); /*Limpia el flujo de la salida estándar*/
 }

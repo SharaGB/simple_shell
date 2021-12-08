@@ -1,91 +1,179 @@
-.\" Manpage for _printf.
-.TH _printf (3) "08 Nov 2021" "_printf man page"
+.\" Manpage for Simple Shell.
+.TH SIMPLE_SHELL 1 "08 Dec 2021" "simple_shell man page"
 
 .SH NAME
-       _printf \- formatted output conversion
+.B Simple Shell
+\- Simple command interpreter (bash)
 
 .SH SYNOPSIS
-
-.B #include \"main.h"
-       int _printf(const char *format, ...)
-
-.B #include <stdarg.h>
-       int print_char(va_list c);
-       int print_str(va_list s);
-       int print_perc(va_list p);
-       int print_dec(va_list d);
-       int print_int(va_list i);
-       int print_b(va_list d);
-       int print_chars(char *str);
-       int print_oct(va_list d);
+.B #include \/"main.h"
+.RS
+.B [user_command] [options] | [file]
 
 .SH DESCRIPTION
-.B _printf() produce output according to a format.
-       The function _printf() write output to stdout, the standard output
-       stream. Show the string, number decimal or any other format specifier
-       created by the user. Returns the number of characters that are printed.
+.B Simple Shell
+is an command language interpreter that executes commands read from the standard input or from a file. Can be execute in two ways, the interactive and non-interactive mode.
 
+.SH INSTALLATION
+.B git clone:
+Use git to clone this repository in your local machine:
+.PP
+.RS
+.B $ git clone https://github.com/SharaGB/simple_shell.git
+
+.SH COMPILATION
+Compile simple_shell using gcc plus the flags specified above. As in this example (note the use of the wildcard * which allows all related '.c' files to be compiled simultaneously), use the command:
+.PP
+.RS
+.B $ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
+
+.SH USAGE
+simple_shell can be run in interactive mode by entering the following command on the command line followed by "enter":
+.IP
 .br
-.PP The functions print_char(), print_str(), print_perc(), print_dec(),
-       print_int(), print_b(), print_chars(), print_oct() are equivalent to
-       the function _printf() , respectively, except that they are called
-       with a va_list instead of a variable number of arguments.
-
+.\&
+.RS
+.B \&$ ./hsh
 .br
-.PP Format of the format string
-       The format string is a character string, beginning and ending in
-       its initial shift state, if any.  The format string is composed
-       of zero or more directives: ordinary characters (not %), which
-       are copied unchanged to the output stream; and conversion
-       specifications, each of which results in fetching zero or more
-       subsequent arguments.  Each conversion specification is
-       introduced by the character %, and ends with a conversion
-       specifier.  In between there may be (in this order) zero or more
-       flags, an optional minimum field width, an optional precision and
-       an optional length modifier.
-
+.B 🧿 $ /bin/ls
 .br
-.PP Conversion specifiers
-       A character that specifies the type of conversion to be applied.
-       The conversion specifiers and their meanings are:
-
-.TP
-.B d, i
-       Integer in decimal base with sign.
-
-.TP
-.B c
-       character output.
-
-.TP
-.B s
-       Prints the characters from the given address until a null
-       character is found.
-
-.TP
-.B b
-       convert a decimal to binary.
-
-.TP
-.B o, u, x, X
-       The unsigned int argument is converted to unsigned octal
-       (o), unsigned decimal (u), or unsigned hexadecimal (x and
-       X) notation.  The letters abcdef are used for x
-       conversions; the letters ABCDEF are used for X conversions.
-
-.TP
-.B %
-       A '%' is written.  No argument is converted.  The complete
-       conversion specification is '%%'.
-
-.SH RETURN VALUE
-       This function returns the length string of the number of characters
-       printed.
+.B \&hsh main.c shell.c
 .br
+.B 🧿 $
+.P
+.RE
+Note that the prompt ('$') will appear and you will then be in interactive mode and can enter the commands followed by "enter".
 
-.SH BUGS
-       No known bugs.
+.PP
+.RE
+Also, simple_shell can be run in non-interactive mode by using shell scripts. You can do this via pipes:
+.IP
+.br
+.\&
+.RS
+.B \&$ echo "/bin/ls" | ./hsh
+.br
+.B hsh main.c shell.c test_ls_2
+.br
+.B $
+.P
+.RE
+
+.SH BUILT-IN
+The Simple Shell has as built-in functions:
+.TP
+.br
+.B env
+With the command env, Simple Shell display, in the standar output, all the variables store in the environment.
+
+.BR Usage:
+env
+
+.TP
+.br
+.B exit
+Exits the shell, do not handle arguments
+
+.BR Usage:
+exit
+
+.TP
+.br
+.B help:
+Display the help information about built-in functions.
+
+.BR Usage:
+help [BUILTIN]
+.P
+.RE
+
+Example of builtin commands:
+
+.B env:
+.IP
+.br
+.\&
+.RS
+\&🧿 $ env
+.br
+.RS
+\&SHELL=/bin/bash
+.br
+\&COLORTERM=truecolor
+.br
+\&TERM_PROGRAM_VERSION=1.62.3
+.br
+\&WSL_DISTRO_NAME=Ubuntu-20.04
+.br
+\&NAME=DESKTOP-MHDLLP0
+.br
+\&PWD=/home/shara/simple_shell
+.br
+\&LOGNAME=shara
+.br
+\&VSCODE_GIT_ASKPASS_NODE=/home/shara/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/node
+.br
+\&MOTD_SHOWN=update-motd
+.br
+\&HOME=/home/shara
+.br
+\&LANG=C.UTF-8
+.P
+.RE
+
+.B Help [BUILIN]:
+.IP
+.br
+.\&
+.RS
+\&🧿 $ help help
+.br
+\&help: help
+    help: help [command]
+        Display information about builtin commands.
+        Displays brief summaries of builtin commands.
+
+Exit Status:
+    Returns success unless PATTERN is not found or an invalid option is given.
+
+    So that's what help command does telling everything
+    about the command and helping you out.
+.br
+\&🧿 $
+.P
+.RE
+
+.B exit:
+.IP
+.br
+.\&
+.RS
+\&shara@DESKTOP-MHDLLP0:~/simple_shell$ ./hsh
+.br
+\&🧿 $ ls
+AUTHORS    Test        execute.c    function_aux.c    help_cd   help_exit  hsh                 main.h              non_built_in.c          token.c
+README.md  built_in.c  free_args.c  function_aux_2.c  help_env  help_help  interactive_mode.c  man_1_simple_shell  non_interactive_mode.c
+.br
+\&🧿 $ ps
+  PID TTY          TIME CMD
+ 2635 pts/2    00:00:00 bash
+30217 pts/2    00:00:00 hsh
+30285 pts/2    00:00:00 ps
+.br
+\&🧿 $ exit
+.br
+\&shara@DESKTOP-MHDLLP0:~/simple_shell$
+.P
+.RE
+
+.SH MAN
+.B Man Page 📑
+To see the man page of our simple_shell function use:
+.PP
+.RS
+.B man ./man_1_simple_shell
 
 .SH AUTHOR
-       Daniel Duarte Palacios, 3811@holbertonscool.com
-       Shara García Betancur, 3779@holbertonscool.com
+\fICarlos Rincón, 3901@holbertonscool.com
+
+Shara García Betancur, 3779@holbertonscool.com\fP
