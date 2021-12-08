@@ -2,7 +2,7 @@
 #define _SHELL_H_
 
 #define DELIMITER " \t\n"
-#define PROMPT "🧿 $ "
+#define PROMPT "$ "
 
 extern char **environ;
 
