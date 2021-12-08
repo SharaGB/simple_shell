@@ -59,7 +59,7 @@ int built_cd(char **args)
  */
 int built_exit(char **args __attribute__((unused)))
 {
-	exit(EXIT_SUCCESS);
+	exit(0);
 }
 
 /**

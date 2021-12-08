@@ -16,7 +16,7 @@ void split_line(char *str)
 	if (!tokens)
 	{
 		free(tokens);
-		exit(EXIT_FAILURE);
+		exit(1);
 	}
 	token_line = strtok(str, DELIMITER); /*Lo almacena dentro de token_linen*/
 	while (token_line)

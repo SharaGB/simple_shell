@@ -22,7 +22,7 @@ int execute(char **command)
 		if (execve(pathname, command, environ) == -1) /*Ejecuta el nuevo programa*/
 		{
 			perror("./shell");
-			exit(0);
+			exit(1);
 		}
 	}
 	else
