@@ -12,6 +12,7 @@ extern char **environ;
 #include <string.h> /*strcmp, strtok*/
 #include <signal.h>
 #include <fcntl.h>
+#include <sys/types.h>
 #include <sys/wait.h> /*waitpid*/
 #include <sys/stat.h> /*stat*/
 
