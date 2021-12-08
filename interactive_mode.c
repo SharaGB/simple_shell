@@ -5,7 +5,7 @@
  * @av: Is a NULL terminated array of strings
  * Return: Always 0
  */
-int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
+int main(void)
 {
 	int readline = 0;
 	char *line = NULL;
@@ -45,5 +45,4 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 void handle_signal(int sign __attribute__((unused)))
 {
 	write(STDOUT_FILENO, "\n🧿 $ ", 9);
-	fflush(stdout); /*Limpia el flujo de la salida estándar*/
 }
