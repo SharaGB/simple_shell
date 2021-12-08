@@ -22,7 +22,7 @@ int execute(char **command)
 	{
 		if (execve(pathname, command, environ) == -1) /*Ejecuta el nuevo programa*/
 		{
-			write(STDOUT_FILENO, "./shell: No such file or directory\n", 36);
+			perror(command[0]);
 			exit(EXIT_FAILURE);
 		}
 	}
