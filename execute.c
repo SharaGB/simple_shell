@@ -22,16 +22,12 @@ int execute(char **command)
 	{
 		if (execve(pathname, command, environ) == -1) /*Ejecuta el nuevo programa*/
 		{
-			perror(command[0]);
-			exit(EXIT_FAILURE);
+			perror("./shell");
+			exit(0);
 		}
 	}
 	else
-		waitpid(pid, &status, 0); /*Espera a que el proceso hijo termine*/
-	my_pid = getpid(); /*Recupero el ID del proceso actual*/
-	if (my_pid)
-	{
-		return (my_pid);
-	}
+		wait(&status); /*Espera a que el proceso hijo termine*/
+
 	return (0);
 }
