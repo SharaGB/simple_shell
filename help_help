@@ -1,4 +1,4 @@
-help help
+help: help
     help: help [command]
         Display information about builtin commands.
         Displays brief summaries of builtin commands.

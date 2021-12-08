@@ -30,9 +30,9 @@ int execute(char **command)
 	else
 		waitpid(pid, &status, 0); /*Espera a que el proceso hijo termine*/
 	my_pid = getpid(); /*Recupero el ID del proceso actual*/
-	if (my_pid == -1)
+	if (my_pid)
 	{
-		return (1);
+		return (my_pid);
 	}
 	return (0);
 }

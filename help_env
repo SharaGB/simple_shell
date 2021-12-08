@@ -1,4 +1,4 @@
-help env
+env: env
 
     env is a shell command for Linux, Unix, and Unix-like operating systems.
     It can print a list of the current environment variables, or to run another

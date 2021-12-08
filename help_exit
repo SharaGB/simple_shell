@@ -1,4 +1,5 @@
-help exit -> Terminate the program:
+exit: exit
+    help exit -> Terminate the program:
 
     The exit command is used to terminate program execution
     and to return to the operating system.

@@ -99,7 +99,7 @@ int built_help(char **args)
 
 	if (args[1] == NULL)
 	{
-		read_textfile("help_built_in", 1024);
+		return (1);
 	}
 	while (built_in[i].name != NULL)
 	{
