@@ -45,7 +45,6 @@ int _strlen(char *s);
 int counter(char *str);
 char *_strdup(char *str);
 char *_str_dup(char *str);
-void free_args(char **args);
 int _strcmp(char *s1, char *s2);
 int _strlenconst(const char *s);
 char *_getenv(const char *name);

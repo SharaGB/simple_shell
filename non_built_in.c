@@ -36,13 +36,9 @@ char *_which(char *command)
 					return (command_path); /*Devuelve la string concatenada si se encuentra*/
 				}
 			}
-			else
-			{
-				free(tmp);
-				free(command_path);
-			}
+			free(tmp);
+			free(command_path);
 		}
 	}
-	free(pathname);
 	return (NULL); /*En caso contrario retorna NULL*/
 }

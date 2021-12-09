@@ -14,6 +14,6 @@ void non_interactive_mode(void)
 	line[readline - 1] = 0;
 
 	split_line(line);
-	exit(0);
 	free(line);
+	exit(0);
 }

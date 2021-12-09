@@ -11,7 +11,10 @@ int execute(char **command)
 	int status = 0;
 	char *pathname = NULL;
 
-	pathname = _which(command[0]);
+	if (access(command[0], X_OK == 0))
+	{
+		pathname = _which(command[0]);
+	}
 	pid = fork(); /*Se crea un nuevo proceso*/
 	if (pid == -1)
 	{
@@ -19,13 +22,30 @@ int execute(char **command)
 	}
 	if (!pid)
 	{
-		if (execve(pathname, command, environ) == -1) /*Ejecuta el nuevo programa*/
+		if (pathname == NULL)
 		{
-			perror("./shell");
-			exit(1);
+			if (execve(command[0], command, environ) == -1)
+			{
+				perror("./shell");
+				exit(0);
+			}
+		}
+		else
+		{
+			if (execve(pathname, command, environ) == -1)
+			{
+				perror("./shell");
+				exit(0);
+			}
 		}
 	}
 	else
-		waitpid(pid, &status, 0); /*Espera a que el proceso hijo termine*/
+	{
+		wait(&status); /*Espera a que el proceso hijo termine*/
+	}
+	if (pathname)
+	{
+		free(pathname);
+	}
 	return (0);
 }
