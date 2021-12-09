@@ -11,7 +11,7 @@ int execute(char **command)
 	int status = 0;
 	char *pathname = NULL;
 
-	if (access(command[0], X_OK == 0))
+	if (access(command[0], F_OK == 0)) /*Comprobrar la existencia de un archivo*/
 	{
 		pathname = _which(command[0]);
 	}
