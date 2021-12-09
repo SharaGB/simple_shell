@@ -119,6 +119,6 @@ man ./man_1_simple_shell
 
 ## Authors 🖋
 
-Carlos Rincón | [GitHub](https://github.com/CarlosRinconsofdev) | [Gmail](3901@holbertonschool.com)
+Carlos Rincón | [GitHub](https://github.com/CarlosRinconsofdev)
 
-Shara García | [GitHub](https://github.com/SharaGB) | [Gmail](3779@holbertonschool.com)
+Shara García | [GitHub](https://github.com/SharaGB)
