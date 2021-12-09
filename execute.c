@@ -27,7 +27,7 @@ int execute(char **command)
 			if (execve(command[0], command, environ) == -1)
 			{
 				perror("./shell");
-				exit(127);
+				exit(1);
 			}
 		}
 		else
@@ -35,7 +35,7 @@ int execute(char **command)
 			if (execve(pathname, command, environ) == -1)
 			{
 				perror("./shell");
-				exit(127);
+				exit(1);
 			}
 		}
 	}
