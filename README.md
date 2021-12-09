@@ -115,6 +115,7 @@ man ./man_1_simple_shell
 
 ## Flowchart
 
+![Untitled Diagram drawio](https://user-images.githubusercontent.com/90220978/145336946-b715f736-e143-4766-886d-d939b7cafd8a.png)
 
 ## Authors 🖋
 
