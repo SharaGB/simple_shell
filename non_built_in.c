@@ -6,7 +6,7 @@
  */
 char *_which(char *command)
 {
-	int  len = 0;
+	int len = 0;
 	char *tmp = NULL;
 	char *buff = NULL;
 	char *pathname = "PATH";
@@ -28,8 +28,8 @@ char *_which(char *command)
 			command_path = str_concat(tmp, command);
 			if (stat(command_path, &st) == 0)
 			{
-					free(tmp);
-					return (command_path); /*Devuelve la string concatenada si se encuentra*/
+				free(tmp);
+				return (command_path); /*Devuelve la string concatenada si se encuentra*/
 			}
 			free(tmp);
 			free(command_path);
