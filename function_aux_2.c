@@ -5,7 +5,7 @@
  * @s2: Check string 2
  * Return: str
  */
-char *str_concat(char *s1, char *s2)
+char *str_cat(char *s1, char *s2)
 {
 	char *str = NULL;
 	int len1, len2, i, j;
@@ -103,28 +103,28 @@ char *_strdup(char *str)
 char *_str_dup(char *str)
 {
 	int len = 0, i = 0;
+	char *ptr;
 	char *dup;
-	char *duppass;
 
 	if (str == NULL)
 	{
 		return (NULL);
 	}
 	len = _strlen(str);
-	dup = malloc(sizeof(char) * len + 1);
-	if (dup == NULL)
+	ptr = malloc(sizeof(char) * len + 1);
+	if (ptr == NULL)
 	{
 		return (NULL);
 	}
-	duppass = dup;
+	dup = ptr;
 	while (str[i] != ':' && str[i] != '\0')
 	{
-		*duppass = str[i];
-		duppass++;
+		*dup = str[i];
+		dup++;
 		i++;
 	}
-	*duppass = '\0';
-	return (dup);
+	*dup = '\0';
+	return (ptr);
 }
 
 /**
