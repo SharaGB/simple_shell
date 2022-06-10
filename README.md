@@ -121,4 +121,4 @@ man ./man_1_simple_shell
 
 Carlos Rincón | [GitHub](https://github.com/CarlosRinconsofdev)
 
-Shara García | [GitHub](https://github.com/SharaGB)
+Shara García | [LinkedIn](https://www.linkedin.com/in/sharagb/)
